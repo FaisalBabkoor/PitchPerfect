@@ -15,7 +15,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var stopRecordingButton: UIButton!
     var audioRecorder: AVAudioRecorder!
     let session = AVAudioSession.sharedInstance()
-
+    let stopRecordingIdentifier = "stopRecording"
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI(false)
@@ -66,7 +66,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecording()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "stopRecording"{
+        if segue.identifier == stopRecordingIdentifier{
             let playSoundVC = segue.destination as! PlaySoundsViewController
             let recordedAudioURL = sender as! URL
             playSoundVC.recordedAudioURL = recordedAudioURL
